@@ -65,7 +65,7 @@ def main(savepath='images'):
 
         for idx, _ in enumerate(list_start):
             idx_s, idx_e = list_start[idx], list_end[idx]
-            label = contents[idx_s+1].split('[')[-1].replace(']', '')
+            label = contents[idx_s+1].split('[')[-1].replace(']\n', '')
 
             contents_tmp = contents[idx_s:idx_e]
             idx_down = -1
@@ -97,7 +97,7 @@ def main(savepath='images'):
                 plt.plot(list_coord_x[idx_c], list_coord_y[idx_c], label='pen %d' %(idx_c+1))
             plt.legend(bbox_to_anchor=(1.05, 1.0), loc='upper left')
             plt.tight_layout()
-            plt.savefig(os.path.join(savepath, subpath, '%06d-%06d.png' %(idx_s, idx_e)))
+            plt.savefig(os.path.join(savepath, subpath, '%06d-%s.png' %(idx, label)))
             plt.close()
 
 if __name__ == '__main__':
